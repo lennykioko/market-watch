@@ -47,7 +47,7 @@
                     <th scope="row">{{loop.index}}</th>
                     <td>{{currency.symbol}}</td>
                     <td>{{currency.trend}}</td>
-                    <td>{{currency.accumulate * 5}} %</td>
+                    <td>{{(currency.accumulate * 5)|round}} %</td>
                     <td>{{((currency.updated_at - now) / 3600)|round}} hour(s) ago</td>
                     <td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" id=""></div></td>
                 </tr>

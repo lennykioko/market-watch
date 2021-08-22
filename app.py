@@ -6,11 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
 
 
-project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(
-    os.path.join(project_dir, "sqlite.db"))
-
-
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -39,7 +34,7 @@ class Accumulator(db.Model):
 @app.route('/wise', methods=['GET'])
 def index():
     now = datetime.datetime.now()
-    currencies = Wisdom.query.filter_by(is_valid=True).all()
+    currencies = Wisdom.query.order_by(desc(Wisdom.points)).all()
     return render_template('index.html', currencies=currencies, now=now)
 
 

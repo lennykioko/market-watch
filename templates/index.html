@@ -48,7 +48,7 @@
                     <th scope="row">{{loop.index}}</th>
                     <td>{{currency.symbol}}</td>
                     <td>{{currency.trend}}</td>
-                    <td>{{currency.points * 5}} %</td>
+                    <td>{{(currency.points * 9.091)|round}} %</td>
 
                     <td>{{currency.atr}}</td>
                     <td>{{((currency.updated_at - now) / 3600)|round}} hour(s) ago</td>
