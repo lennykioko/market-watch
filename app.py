@@ -1,4 +1,5 @@
 import os
+import datetime
 
 from flask import Flask, request, render_template, Response
 from flask_sqlalchemy import SQLAlchemy
@@ -20,15 +21,15 @@ db = SQLAlchemy(app)
 class Wisdom(db.Model):
     symbol = db.Column(db.String(100), unique=True, nullable=False, primary_key=True)
     trend = db.Column(db.String(100), nullable=False)
-    is_valid = db.Column(db.Boolean, nullable=False, default=False)
-    atr = db.Column(db.Float, nullable=False, default=0)
+    points = db.Column(db.Float, nullable=False, default=0.0)
+    atr = db.Column(db.Float, nullable=False, default=0.0)
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
 
 class Accumulator(db.Model):
     symbol = db.Column(db.String(100), unique=True, nullable=False, primary_key=True)
     trend = db.Column(db.String(100), nullable=False)
-    accumulate = db.Column(db.Float, nullable=False)
+    accumulate = db.Column(db.Float, nullable=False, default=0.0)
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
 
@@ -37,8 +38,9 @@ class Accumulator(db.Model):
 
 @app.route('/wise', methods=['GET'])
 def index():
+    now = datetime.datetime.now()
     currencies = Wisdom.query.filter_by(is_valid=True).all()
-    return render_template('index.html', currencies=currencies)
+    return render_template('index.html', currencies=currencies, now=now)
 
 
 @app.route('/wise/mt4', methods=['GET', 'POST'])
@@ -46,19 +48,19 @@ def wise():
     try:
         symbol = request.args.get('symbol', type=str)
         trend = request.args.get('trend', type=str)
-        is_valid = request.args.get('is_valid', type=bool)
+        points = request.args.get('points', type=float)
         atr = request.args.get('atr', type=float)
 
         currency = Wisdom.query.filter_by(symbol=symbol).first()
 
         if currency:
             currency.trend = trend
-            currency.is_valid = is_valid
+            currency.points = points
             currency.atr = atr
             db.session.commit()
 
         else:
-            currency = Wisdom(symbol=symbol, trend=trend, is_valid=is_valid, atr=atr)
+            currency = Wisdom(symbol=symbol, trend=trend, points=points, atr=atr)
             db.session.add(currency)
             db.session.commit()
 
@@ -90,8 +92,9 @@ def delete():
 @app.route('/', methods=['GET'])
 @app.route('/acc', methods=['GET'])
 def acce():
+    now = datetime.datetime.now()
     currencies = Accumulator.query.order_by(desc(Accumulator.accumulate)).all()
-    return render_template('accumulator.html', currencies=currencies)
+    return render_template('accumulator.html', currencies=currencies, now=now)
 
 
 @app.route('/acc/mt4', methods=['GET', 'POST'])

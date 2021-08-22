@@ -36,7 +36,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Symbol</th>
                     <th scope="col">Trend</th>
-                    <th scope="col">Accumulate</th>
+                    <th scope="col">Accumulate (%)</th>
                     <th scope="col">Last Updated</th>
                     <th scope="col">Toggle</th>
                 </tr>
@@ -47,8 +47,8 @@
                     <th scope="row">{{loop.index}}</th>
                     <td>{{currency.symbol}}</td>
                     <td>{{currency.trend}}</td>
-                    <td>{{currency.accumulate}}</td>
-                    <td>{{currency.updated_at.strftime('%a  %I:%M %p')}}</td>
+                    <td>{{currency.accumulate * 5}} %</td>
+                    <td>{{((currency.updated_at - now) / 3600)|round}} hour(s) ago</td>
                     <td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" id=""></div></td>
                 </tr>
                 {% endfor %}
