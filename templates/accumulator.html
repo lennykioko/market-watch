@@ -14,6 +14,15 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Market Watcher</title>
+
+    <meta name="description" content="Market Watch from BileonaireFX">
+    <meta property="og:title" content="Market Watcher" />
+    <meta property="og:url" content="https://bileonairefx.herokuapp.com/" />
+    <meta property="og:description" content="Market Watcher">
+    <meta property="og:image" content="https://imgur.com/a/TIR7ek9">
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
@@ -21,7 +30,7 @@
 <body>
     <div class="container-fluid">
         <h4 class="my-3">Market watch (Accumulator)</h4>
-        <table class="table table-striped buy mb-2">
+        <table class="table table-striped p-4">
             <thead>
                 <tr>
                     <th scope="col">#</th>

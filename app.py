@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, request, render_template, Response
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import asc
+from sqlalchemy import desc
 
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -90,7 +90,7 @@ def delete():
 @app.route('/', methods=['GET'])
 @app.route('/acc', methods=['GET'])
 def acce():
-    currencies = Accumulator.query.order_by(asc(Accumulator.accumulate)).all()
+    currencies = Accumulator.query.order_by(desc(Accumulator.accumulate)).all()
     return render_template('accumulator.html', currencies=currencies)
 
 
