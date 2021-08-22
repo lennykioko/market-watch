@@ -33,9 +33,8 @@ class Accumulator(db.Model):
 
 @app.route('/wise', methods=['GET'])
 def index():
-    now = datetime.datetime.now()
     currencies = Wisdom.query.order_by(desc(Wisdom.points)).all()
-    return render_template('index.html', currencies=currencies, now=now)
+    return render_template('index.html', currencies=currencies)
 
 
 @app.route('/wise/mt4', methods=['GET', 'POST'])
@@ -87,9 +86,8 @@ def delete():
 @app.route('/', methods=['GET'])
 @app.route('/acc', methods=['GET'])
 def acce():
-    now = datetime.datetime.now()
     currencies = Accumulator.query.order_by(desc(Accumulator.accumulate)).all()
-    return render_template('accumulator.html', currencies=currencies, now=now)
+    return render_template('accumulator.html', currencies=currencies)
 
 
 @app.route('/acc/mt4', methods=['GET', 'POST'])

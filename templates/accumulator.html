@@ -48,7 +48,7 @@
                     <td>{{currency.symbol}}</td>
                     <td>{{currency.trend}}</td>
                     <td>{{(currency.accumulate * 5)|round}} %</td>
-                    <td>{{((currency.updated_at - now) // 3600)}} hour(s) ago</td>
+                    <td>{{currency.updated_at.strftime(%H:%M %Z)</td>
                     <td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" id=""></div></td>
                 </tr>
                 {% endfor %}
