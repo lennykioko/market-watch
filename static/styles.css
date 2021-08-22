@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+:root {
+  --color-grey-100: #fafafa;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0, 0 , 0 , 0.25);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(64,109,122);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(64,109,122, 0.8);
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--color-grey-100);
+}
+
+.table-striped > tbody > tr.buy > td,
+.table-striped > tbody > tr.buy > th {
+   background-color: #D1E7DD;
+}
+
+.table-striped > tbody > tr.sell > td,
+.table-striped > tbody > tr.sell > th {
+   background-color: #F9D7DA;
+}
