@@ -32,14 +32,14 @@ class Wisdom(db.Model):
     atr = db.Column(db.Float, nullable=False, default=0.0)
     h1choppy = db.Column(db.String(100))
     m15choppy = db.Column(db.String(100))
-    updated_at = db.Column(db.DateTime)
+    updated_at = db.Column(db.DateTime(timezone=True))
 
 
 class Accumulator(db.Model):
     symbol = db.Column(db.String(100), unique=True, nullable=False, primary_key=True)
     trend = db.Column(db.String(100), nullable=False)
     accumulate = db.Column(db.Float, nullable=False, default=0.0)
-    updated_at = db.Column(db.DateTime)
+    updated_at = db.Column(db.DateTime(timezone=True))
 
 
 # +-------------------------------------------------------------+
