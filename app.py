@@ -67,13 +67,13 @@ def wise():
             currency.trend = trend
             currency.points = points
             currency.atr = atr
-            currency.updated_at = datetime.now(tz)
+            currency.updated_at = datetime.now(tz=tz)
             currency.h1choppy = h1choppy
             currency.m15choppy = m15choppy
             db.session.commit()
 
         else:
-            currency = Wisdom(symbol=symbol, trend=trend, points=points, atr=atr, updated_at=datetime.now(tz), h1choppy=h1choppy, m15choppy=m15choppy)
+            currency = Wisdom(symbol=symbol, trend=trend, points=points, atr=atr, updated_at=datetime.now(tz=tz), h1choppy=h1choppy, m15choppy=m15choppy)
             db.session.add(currency)
             db.session.commit()
 
@@ -121,11 +121,11 @@ def accumulator():
         if currency:
             currency.trend = trend
             currency.accumulate = accumulate
-            currency.updated_at = datetime.now(tz)
+            currency.updated_at = datetime.now(tz=tz)
             db.session.commit()
 
         else:
-            currency = Accumulator(symbol=symbol, trend=trend, accumulate=accumulate, updated_at=datetime.now(tz))
+            currency = Accumulator(symbol=symbol, trend=trend, accumulate=accumulate, updated_at=datetime.now(tz=tz))
             db.session.add(currency)
             db.session.commit()
 
