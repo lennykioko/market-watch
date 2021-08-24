@@ -46,12 +46,12 @@ body {
 
 .table-striped > tbody > tr.buy > td,
 .table-striped > tbody > tr.buy > th {
-  background-color: hsl(153, 31%, 60%);
+  background-color: hsl(153, 31%, 70%);
 }
 
 .table-striped > tbody > tr.sell > td,
 .table-striped > tbody > tr.sell > th {
-  background-color: hsl(355, 74%, 60%);
+  background-color: hsl(355, 74%, 70%);
 }
 
 .table-striped > tbody > tr.buy.warm > td,
