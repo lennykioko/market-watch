@@ -43,7 +43,7 @@
             </thead>
             <tbody>
                 {% for currency in currencies %}
-                <tr class="{{currency.trend}}">
+                <tr class="{{currency.trend}} {{'warm' if 7 >= currency.points <= 13}}">
                     <th scope="row">{{loop.index}}</th>
                     <td>{{currency.symbol}}</td>
                     <td>{{currency.trend}}</td>
