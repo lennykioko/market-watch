@@ -46,10 +46,20 @@ body {
 
 .table-striped > tbody > tr.buy > td,
 .table-striped > tbody > tr.buy > th {
-   background-color: #D1E7DD;
+  background-color: #D1E7DD;
 }
 
 .table-striped > tbody > tr.sell > td,
 .table-striped > tbody > tr.sell > th {
-   background-color: #F9D7DA;
+  background-color: #F9D7DA;
+}
+
+.table-striped > tbody > tr.buy.warm > td,
+.table-striped > tbody > tr.buy.warm > th {
+  background-color: #d1e7dde3;
+}
+
+.table-striped > tbody > tr.sell.warm > td,
+.table-striped > tbody > tr.sell.warm > th {
+  background-color: #f9d7dad3;
 }
