@@ -46,11 +46,11 @@
             </thead>
             <tbody>
                 {% for currency in currencies %}
-                <tr class="{{currency.trend}} {{'warm' if currency.points >= 8 and currency.points <= 11}}">
+                <tr class="{{currency.trend}} {{'warm' if currency.points >= currency.minWarm and currency.points <= currency.maxWarm}}">
                     <th scope="row">{{loop.index}}</th>
                     <td>{{currency.symbol}}</td>
                     <td>{{currency.trend}}</td>
-                    <td>{{(currency.points * 5.2631)|round}} %</td>
+                    <td>{{(currency.points * currency.multiply)|round}} %</td>
 
                     <td>{{currency.atr}}</td>
                     <td>{{currency.h1choppy}}</td>

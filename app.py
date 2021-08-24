@@ -32,6 +32,9 @@ class Wisdom(db.Model):
     atr = db.Column(db.Float, nullable=False, default=0.0)
     h1choppy = db.Column(db.String(100))
     m15choppy = db.Column(db.String(100))
+    multiply = db.Column(db.Float, nullable=False, default=0.0)
+    minWarm = db.Column(db.Float, nullable=False, default=0.0)
+    maxWarm = db.Column(db.Float, nullable=False, default=0.0)
     updated_at = db.Column(db.DateTime(timezone=True))
 
 
@@ -60,6 +63,9 @@ def wise():
         atr = request.args.get('atr', type=float)
         h1choppy = request.args.get('h1choppy', type=str)
         m15choppy = request.args.get('m15choppy', type=str)
+        multiply = request.args.get('multiply', type=float)
+        minWarm = request.args.get('minWarm', type=float)
+        maxWarm = request.args.get('maxWarm', type=float)
 
         currency = Wisdom.query.filter_by(symbol=symbol).first()
 
@@ -70,10 +76,13 @@ def wise():
             currency.updated_at = datetime.now(tz=tz)
             currency.h1choppy = h1choppy
             currency.m15choppy = m15choppy
+            currency.multiply = multiply
+            currency.minWarm = minWarm
+            currency.maxWarm = maxWarm
             db.session.commit()
 
         else:
-            currency = Wisdom(symbol=symbol, trend=trend, points=points, atr=atr, updated_at=datetime.now(tz=tz), h1choppy=h1choppy, m15choppy=m15choppy)
+            currency = Wisdom(symbol=symbol, trend=trend, points=points, atr=atr, updated_at=datetime.now(tz=tz), h1choppy=h1choppy, m15choppy=m15choppy, multiply=multiply, minWarm=minWarm, maxWarm=maxWarm)
             db.session.add(currency)
             db.session.commit()
 
