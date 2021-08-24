@@ -46,20 +46,20 @@ body {
 
 .table-striped > tbody > tr.buy > td,
 .table-striped > tbody > tr.buy > th {
-  background-color: #D1E7DD;
+  background-color: hsl(153, 31%, 60%);
 }
 
 .table-striped > tbody > tr.sell > td,
 .table-striped > tbody > tr.sell > th {
-  background-color: #F9D7DA;
+  background-color: hsl(355, 74%, 60%);
 }
 
 .table-striped > tbody > tr.buy.warm > td,
 .table-striped > tbody > tr.buy.warm > th {
-  background-color: #d1e7dde3;
+  background-color: hsl(153, 31%, 90%);
 }
 
 .table-striped > tbody > tr.sell.warm > td,
 .table-striped > tbody > tr.sell.warm > th {
-  background-color: #f9d7dad3;
+  background-color: hsl(355, 74%, 90%);
 }
