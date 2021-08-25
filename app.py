@@ -93,13 +93,17 @@ def wise():
     return Response("{'ok':'ok'}", status=200, mimetype='application/json')
 
 
-@app.route("/wise/delete", methods=['GET', 'POST'])
+@app.route("/wise/delete", methods=['DELETE', 'POST'])
 def delete():
     try:
         symbol = request.args.get('symbol', type=str)
-        currency = Wisdom.query.filter_by(symbol=symbol).first()
-        db.session.delete(currency)
-        db.session.commit()
+        if symbol:
+            currency = Wisdom.query.filter_by(symbol=symbol).first()
+            db.session.delete(currency)
+            db.session.commit()
+        else:
+            Wisdom.query.delete()
+            db.session.commit()
 
     except Exception as e:
         print("Error: ", e)
@@ -145,13 +149,17 @@ def accumulator():
     return Response("{'ok':'ok'}", status=200, mimetype='application/json')
 
 
-@app.route("/acc/delete", methods=['GET', 'POST'])
+@app.route("/acc/delete", methods=['DELETE', 'POST'])
 def Accdelete():
     try:
         symbol = request.args.get('symbol', type=str)
-        currency = Accumulator.query.filter_by(symbol=symbol).first()
-        db.session.delete(currency)
-        db.session.commit()
+        if symbol:
+            currency = Accumulator.query.filter_by(symbol=symbol).first()
+            db.session.delete(currency)
+            db.session.commit()
+        else:
+            Accumulator.query.delete()
+            db.session.commit()
 
     except Exception as e:
         print("Error: ", e)
